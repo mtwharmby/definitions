@@ -41,6 +41,7 @@ set(BASE_FILES
 	NXcrystal.nxdl.xml 
 	NXdata.nxdl.xml 
 	NXdetector_group.nxdl.xml 
+	NXdetector_module.nxdl.xml 
 	NXdetector.nxdl.xml 
 	NXdisk_chopper.nxdl.xml 
 	NXentry.nxdl.xml 
