@@ -36,6 +36,17 @@
     version="1.0"
     svnid="$Id$"
     type="group" extends="NXobject">
+ 	<attribute name="implements" type="NX_CHAR">
+		<doc>
+			A komma separated list of interfaces this component implements in 
+			full or partially.
+			
+			NXmonitor can implement: NXIFbeamline_component, NXIF_single_detector, 
+			NXIF_single_detector_tof, NXIF_single_detector_scanned,
+			NXIF_count_time, NXIF_count_time_scanned
+		</doc>
+	</attribute>
+
     <doc>Template of monitor data. It is similar to the NXdata groups containing
         monitor data and its associated dimension scale, e.g. time_of_flight or
         wavelength in pulsed neutron instruments. However, it may also include
@@ -77,45 +88,13 @@
             <item value="Scintillator"/>
         </enumeration>
     </field>
-    <field name="time_of_flight" type="NX_FLOAT" units="NX_TIME_OF_FLIGHT">
-        <doc>Time-of-flight</doc>
-        <dimensions>
-            <dim index="1" ref="efficiency"/>
-        </dimensions>
-    </field>
     <field name="efficiency" type="NX_NUMBER" units="NX_DIMENSIONLESS">
         <doc>Monitor efficiency</doc>
         <dimensions><dim index="1" ref="i"/></dimensions>
     </field>
-    <field name="data" type="NX_NUMBER" units="NX_ANY">
-        <doc>
-			Monitor data
-			
-			The signal and axes attributes take the same definitions as in :ref:`NXdata`: 
-			
-			:signal:
-			  ``signal=1`` means this is the plottable data
-			:axes:
-			  ``axes="names"`` where names are defined as a colon-delimited string 
-			  within this attribute in the C-order of the data array
-        </doc>
-        <dimensions rank="dataRank">
-            <doc>
-                The rank (``dataRank``) of the ``data`` must satisfy
-                ``1 &lt;= dataRank &lt;= NX_MAXRANK=32``.  
-                At least one ``dim`` must have length ``n``.
-            </doc>
-            <dim index="0" value="n"><!-- index="0": cannot know to which dimension this applies a priori --></dim>
-        </dimensions>
-        <attribute name="signal" type="NX_POSINT"><doc>as defined for NXdata</doc></attribute>
-        <attribute name="axes"><doc>as defined for NXdata</doc></attribute>
-    </field>
     <field name="sampled_fraction" type="NX_FLOAT" units="NX_DIMENSIONLESS">
         <doc>Proportion of incident beam sampled by the monitor (0&lt;x&lt;1)</doc>
     </field>
-    <group type="NXgeometry">
-        <doc>Geometry of the monitor</doc>
-    </group>
     <field name="count_time" type="NX_FLOAT" units="NX_TIME">
         <doc>Elapsed actual counting time, can be an array of size ``np`` when scanning. This is not the
             difference of the calendar time but the time the instrument was really counting, without

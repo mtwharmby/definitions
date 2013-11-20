@@ -36,7 +36,6 @@
     version="1.0"
     svnid="$Id$"
     type="group" extends="NXobject">
-
     <doc>Template of a beamline aperture.</doc>
     <!-- TODO compare with "screens" in SHADOW -->
 

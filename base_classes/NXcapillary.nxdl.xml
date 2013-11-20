@@ -41,6 +41,14 @@
       This is a dictionary of field names to use for describing a capillary as used 
       in X-ray beamlines. Based on information provided by Gerd Wellenreuther.
       </doc>
+	<attribute name="implements" type="NX_CHAR">
+		<doc>
+			A komma separated list of interfaces this component implements in 
+			full or partially.
+			
+			NXcapillary can implement: NXIFbeamline_component
+		</doc>
+	</attribute>
     <field name="type" type="NX_CHAR">
         <doc>Type of the capillary</doc>
         <enumeration>

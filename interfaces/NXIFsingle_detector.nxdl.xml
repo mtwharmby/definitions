@@ -22,45 +22,44 @@
 # For further information, see http://www.nexusformat.org
 
 ########### SVN repository information ###################
-# $Date$
-# $Author$
-# $Revision$
-# $HeadURL$
-# $Id$
+# $Date: 2012-09-27 05:57:58 +0200 (Thu, 27 Sep 2012) $
+# $Author: Pete Jemian $
+# $Revision: 1162 $
+# $HeadURL: https://svn.nexusformat.org/definitions/branches/interfaces/base_classes/NXaperture.nxdl.xml $
+# $Id: NXaperture.nxdl.xml 1162 2012-09-27 03:57:58Z Pete Jemian $
 ########### SVN repository information ###################
 -->
 <definition xmlns="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@" category="base"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@ ../nxdl.xsd"
-    name="NXpolarizer" 
+    name="NXIFsingle_detector" 
     version="1.0"
-    svnid="$Id$"
-	type="group" extends="NXobject">
-	<attribute name="implements" type="NX_CHAR">
+    type="group" extends="NXobject">
+    <doc>
+		This interface is for a single counter
+    </doc>
+    <field name="data" type="NX_NUMBER">
 		<doc>
-			A komma separated list of interfaces this component implements in 
-			full or partially.
-			
-			NXpolarizer can implement: NXIFbeamline_component
+			The counts collected in the single detector
 		</doc>
-	</attribute>
-    <doc>Template of a beamline spin polarizer.
-        
-        This is a draft and is subject to revision.</doc>
-    <field name="type">
-        <doc>one of these values: "crystal", "supermirror", "3He"</doc>
-    </field>
-    <field name="composition">
-        <doc>description of the composition of the polarizing material</doc>
-    </field>
-    <field name="reflection" type="NX_INT" units="NX_UNITLESS">
-        <doc>[hkl] values of nominal reflection</doc>
-        <dimensions>
-            <dim index="1" value="3"/>
-        </dimensions>
+		<attribute name="signal" type="NX_POSINT">
+		<enumeration>
+			<item value="1"/>
+		</enumeration>
+		</attribute>
     </field>
     <field name="efficiency" type="NX_FLOAT" units="NX_DIMENSIONLESS">
-        <doc>polarizing efficiency</doc>
+      <doc>Detection efficiency of the detector</doc>
     </field>
-</definition>
+    <field name="data_error" type="NX_NUMBER" units="NX_ANY">
+      <doc>
+	      The best estimate of the uncertainty in the data value. Where
+	      possible, this should be the standard deviation, which has the same units
+	      as the data.
+      </doc>
+   </field>
+     <field name="dead_time" type="NX_FLOAT" units="NX_TIME">
+    <doc>Detector dead time</doc>
+  </field>
 
+</definition>

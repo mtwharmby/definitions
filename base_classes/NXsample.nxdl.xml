@@ -36,7 +36,14 @@
 	version="1.0"
     svnid="$Id$"
 	type="group" extends="NXobject">
-
+	<attribute name="implements" type="NX_CHAR">
+		<doc>
+			A komma separated list of interfaces this component implements in 
+			full or partially.
+			
+			NXsample can implement: NXIFbeamline_component, NXIFmetadata, NXIFsinglecrystal
+		</doc>
+	</attribute>
 	<symbols>
 		<doc>symbolic array lengths to be coordinated between various fields</doc>
 		<symbol name="n_comp"><doc>number of compositions</doc></symbol>
@@ -52,31 +59,6 @@
 		are associated with one of the data dimensions, e.g. the magnetic field, or 
 		logged data, e.g. monitored temperature vs elapsed time.
 	</doc>
-	<field name="name">
-		<doc>Descriptive name of sample</doc>
-	</field>
-	<field name="chemical_formula">
-		<doc>
-			The chemical formula specified using CIF conventions.
-			Abbreviated version of CIF standard: 
-			
-			* Only recognized element symbols may be used.
-			* Each element symbol is followed by a 'count' number. A count of '1' may be omitted.
-			* A space or parenthesis must separate each cluster of (element symbol + count).
-			* Where a group of elements is enclosed in parentheses, the multiplier for the 
-			  group must follow the closing parentheses. That is, all element and group 
-			  multipliers are assumed to be printed as subscripted numbers.
-			* Unless the elements are ordered in a manner that corresponds to their chemical 
-			  structure, the order of the elements within any group or moiety depends on 
-			  whether or not carbon is present.
-			* If carbon is present, the order should be: 
-			
-			  - C, then H, then the other elements in alphabetical order of their symbol. 
-			  - If carbon is not present, the elements are listed purely in alphabetic order of their symbol. 
-			  
-			* This is the *Hill* system used by Chemical Abstracts.
-		</doc>
-	</field>
 	<field name="temperature" type="NX_FLOAT" units="NX_TEMPERATURE">
 		<doc>Sample temperature. This could be a scanned variable</doc>
 		<dimensions rank="anyRank">
@@ -131,34 +113,10 @@
 	<field name="changer_position" type="NX_INT" units="NX_UNITLESS">
 		<doc>Sample changer position</doc>
 	</field>
-	<field name="unit_cell" type="NX_FLOAT" units="NX_LENGTH">
-		<doc>Unit cell parameters (lengths and angles)</doc>
-		<dimensions rank="2"><!--[n_comp,6]-->
-			<dim index="1" value="n_comp"/>
-			<dim index="2" value="6"/>
-		</dimensions>
-	</field>
-	<field name="unit_cell_volume" type="NX_FLOAT" units="NX_VOLUME">
-		<doc>Volume of the unit cell</doc>
-		<dimensions rank="1"><!--[n_comp]-->
-			<dim index="1" value="n_comp"/>
-		</dimensions>
-	</field>
 	<field name="sample_orientation" type="NX_FLOAT" units="NX_ANGLE">
 		<doc>This will follow the Busing and Levy convention from Acta.Crysta v22, p457 (1967)</doc>
 		<dimensions rank="1">
 			<dim index="1" value="3"/>
-		</dimensions>
-	</field>
-	<field name="orientation_matrix" type="NX_FLOAT">
-		<doc>
-			Orientation matrix of single crystal sample.
-			This will follow the Busing and Levy convention from Acta.Crysta v22, p457 (1967)
-		</doc>
-		<dimensions rank="3"><!--[n_comp,3,3]-->
-			<dim index="1" value="n_comp"/>
-			<dim index="2" value="3"/>
-			<dim index="3" value="3"/>
 		</dimensions>
 	</field>
 	<field name="mass" type="NX_FLOAT" units="NX_MASS">
@@ -207,17 +165,9 @@
 			<item value="other" />
 		</enumeration>
 	</field>
-	<field name="description">
-		<doc>
-			Description of the sample
-		</doc>
-	</field>
 	<field name="preparation_date" type="NX_DATE_TIME">
 		<doc>Date of preparation of the sample</doc>
 	</field>
-	<group name="geometry" type="NXgeometry">
-		<doc>The position and orientation of the center of mass of the sample</doc>
-	</group>
 	<group type="NXbeam">
 		<doc>Details of beam incident on sample - used to calculate sample/beam interaction point</doc>
 	</group>
@@ -253,27 +203,6 @@
 	</field>
 	<field name="scattering_length_density" type="NX_FLOAT" units="NX_SCATTERING_LENGTH_DENSITY">
 		<doc>Scattering length density of each component</doc>
-		<dimensions rank="1"><!--[n_comp]-->
-			<dim index="1" value="n_comp"/>
-		</dimensions>
-	</field>
-	<field name="unit_cell_class">
-		<doc>
-			In case it is all we know and we want to record/document it
-		</doc>
-		<dimensions rank="1"><!--[n_comp]-->
-			<dim index="1" value="n_comp"/>
-		</dimensions>
-		<enumeration>
-			<item value="cubic" />
-			<item value="tetragonal" />
-			<item value="orthorhombic" />
-			<item value="monoclinic" />
-			<item value="triclinic" />
-		</enumeration>
-	</field>
-	<field name="unit_cell_group">
-		<doc>Crystallographic point or space group</doc>
 		<dimensions rank="1"><!--[n_comp]-->
 			<dim index="1" value="n_comp"/>
 		</dimensions>
@@ -318,19 +247,6 @@
 		<doc>20 character fixed length sample description for legends</doc>
 		<!-- How is the string length limitation imposed by the XSD? -->
 	</field>
-	<field name="rotation_angle" type="NX_FLOAT" units="NX_ANGLE">
-		<doc>
-			Optional rotation angle for the case when the powder diagram has 
-			been obtained through an omega-2theta scan like from a traditional 
-			single detector powder diffractometer
-		</doc>
-	</field>
-	<field name="x_translation" type="NX_FLOAT" units="NX_LENGTH">
-   <doc>Translation of the sample along the X-direction of the laboratory coordinate system</doc>
-  </field>
-  <field name="distance" type="NX_FLOAT" units="NX_LENGTH">
-   <doc>Translation of the sample along the Z-direction of the laboratory coordinate system</doc>
-  </field>
 	<group type="NXpositioner">
 	  <doc>Any positioner (motor, PZT, ...) used to locate the sample</doc>
 	</group>

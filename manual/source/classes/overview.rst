@@ -2,14 +2,14 @@
 
 .. _ClassDefinitions-Overview:
 
-==========================
-Overview of NeXus classes
-==========================
+=========================================
+Overview of NeXus classes and Interfaces
+=========================================
 
-Each of the NeXus classes is described in two basic ways. First, a short list of
+Each of the NeXus classes or interfaces is described in two basic ways. First, a short list of
 descriptive information is provided as a header, then a condensed listing of the
 basic structure, then a table providing documentation for the various components
-of the NeXus class.
+of the NeXus class or interface.
 
 :category:
     The category of NXDL, one of these:
@@ -36,7 +36,7 @@ of the NeXus class.
 
 :NeXus Definition Language:
     :ref:`NXDL` is used to describe the components in the NeXus
-    Base Classes, as well as application and contributed definitions.
+    Base Classes, as well as interfaces, application and contributed definitions.
     The intent of NXDL is to provide a
     :index:`rules-based method <rules; NXDL>`
     for defining a NeXus data file that is

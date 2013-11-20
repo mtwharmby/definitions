@@ -36,10 +36,22 @@
     version="1.0"
     svnid="$Id$"
 	type="group" extends="NXobject">
-	<doc>This is the description for a (typically neutron) velocity selector</doc>
-	<field name="type">
-		<doc>velocity selector type</doc>
-	</field>
+	<attribute name="implements" type="NX_CHAR">
+		<doc>
+			A komma separated list of interfaces this component implements in 
+			full or partially.
+			
+			NXvelocity_selector can implement: NXIFbeamline_component, NXIFmetadata, NXIFmonochromator
+		</doc>
+	</attribute>
+
+	<doc>
+		This is the description for a (typically neutron) velocity selector. 
+		A neutron velocity selector looks like a turbine but with curved blades. 
+		Only neutrons which match the speed of the rotating blades make it through. Thus 
+		a velocity selector is a monochromator. It can be adjusted by varying the speed of the
+		turbine.
+	</doc>
 	<field name="rotation_speed" type="NX_FLOAT" units="NX_FREQUENCY">
 		<doc>velocity selector rotation speed</doc>
 	</field>
@@ -67,12 +79,5 @@
 	<field name="width" type="NX_FLOAT" units="NX_LENGTH">
 		<doc>input beam width</doc>
 	</field>
-	<field name="wavelength" type="NX_FLOAT" units="NX_WAVELENGTH">
-		<doc>wavelength</doc>
-	</field>
-	<field name="wavelength_spread" type="NX_FLOAT" units="NX_WAVELENGTH">
-		<doc>deviation FWHM /Wavelength</doc>
-	</field>
-	<group type="NXgeometry" name="geometry"/>
 </definition>
 

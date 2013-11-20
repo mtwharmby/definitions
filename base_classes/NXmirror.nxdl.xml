@@ -37,10 +37,15 @@
     svnid="$Id$"
 	type="group" extends="NXobject">
     <doc>Template of a beamline mirror or supermirror.</doc>
-
-    <group type="NXgeometry"><doc><!-- TODO explain what this group means --></doc>
-    </group>
-    <field name="type">
+	<attribute name="implements" type="NX_CHAR">
+		<doc>
+			A komma separated list of interfaces this component implements in 
+			full or partially.
+			
+			NXmirror can implement: NXIFbeamline_component
+		</doc>
+	</attribute>
+     <field name="type">
       <enumeration>
         <item value="single"><doc>mirror with a single material as a reflecting surface</doc></item>
         <item value="multi"><doc>mirror with stacked, multiple layers as a reflecting surface</doc></item>

@@ -41,27 +41,30 @@ set(NXDL_SUFFIX nxdl.xml)
 
 # relative locations for the NXDL instance files
 set (BASE_CLASS_PATH ${CMAKE_SOURCE_DIR}/base_classes)
+set (INTERFACE_PATH ${CMAKE_SOURCE_DIR}/base_classes/interfaces)
 set (APPLICATIONS_CLASS_PATH ${CMAKE_SOURCE_DIR}/applications)
 set (CONTRIBUTED_CLASS_PATH ${CMAKE_SOURCE_DIR}/contributed_definitions)
 set (BASE_CLASS_DIST_PATH ${CMAKE_BINARY_DIR}/dist/base_classes)
+set (INTERFACE_DIST_PATH ${CMAKE_BINARY_DIR}/dist/base_classes/interfaces)
 set (APPLICATIONS_CLASS_DIST_PATH ${CMAKE_BINARY_DIR}/dist/applications)
 set (CONTRIBUTED_CLASS_DIST_PATH ${CMAKE_BINARY_DIR}/dist/contributed_definitions)
 
 # make lists of all the NXDL instances 
 # (useful to make separate lists for category)
 file(GLOB NXDL_BASE_CLASSES RELATIVE ${BASE_CLASS_PATH} ${BASE_CLASS_PATH}/*.${NXDL_SUFFIX})
+file(GLOB NXDL_INTERFACES RELATIVE ${INTERFACE_PATH} ${INTERFACE_PATH}/*.${NXDL_SUFFIX})
 file(GLOB NXDL_APPLICATIONS RELATIVE ${APPLICATIONS_CLASS_PATH} ${APPLICATIONS_CLASS_PATH}/*.${NXDL_SUFFIX})
 file(GLOB NXDL_CONTRIBUTED RELATIVE ${CONTRIBUTED_CLASS_PATH} ${CONTRIBUTED_CLASS_PATH}/*.${NXDL_SUFFIX})
 
 
 # put them all together in one big list
 # be careful, empty directories will return the $(DIR)/*.$(NXDL_SUFFIX) search pattern
-set (ALL_NXDL ${NXDL_BASE_CLASSES} ${NXDL_APPLICATIONS} ${NXDL_CONTRIBUTED})
+set (ALL_NXDL ${NXDL_BASE_CLASSES} ${NXDL_APPLICATIONS} ${NXDL_CONTRIBUTED} ${NXDL_INTERFACES})
 
 set(BUILT_NEXUSMANUAL NeXusManual.pdf NeXusManual.html NeXusRefDoc.pdf)
 
 
-#set(CLEANING_LIST ${BUILT_NEXUSMANUAL} ${BUILT_NEXUSREFDOC} html/ classes/ types.xml units.xml nxdl_desc.xml)
+#set(CLEANING_LIST ${BUILT_NEXUSMANUAL} ${BUILT_NEXUSREFDOC} html/ classes/ classes/interfaces types.xml units.xml nxdl_desc.xml)
 
 if(WIN32)
     to_cygwin_path("${CMAKE_SOURCE_DIR}" CMAKE_SOURCE_DIR_DBLATEX)
@@ -73,6 +76,7 @@ endif()
 
 # for details, see: http://dblatex.sourceforge.net/doc/sec-custom.html
 set(DBLATEX_OPTS -P table.in.float=0 -P doc.lot.show="figure" -I"${CMAKE_SOURCE_DIR_DBLATEX}/manual" -b pdftex -tpdf -x "--path" -x "${CMAKE_BINARY_DIR_DBLATEX}/manual:${CMAKE_BINARY_DIR_DBLATEX}/manual/classes" )
+
 set(OUTPUT_BASE_TEXT_FILES)
 set(OUTPUT_BASE_XML_FILES)
 set(OUTPUT_BASE_XML_TARGETS)
@@ -102,6 +106,38 @@ endforeach(NXDL_FILE)
 
 add_custom_target(BuildBASETXTFiles ALL DEPENDS ${OUTPUT_BASE_TEXT_FILES})
 add_custom_target(BuildBASEXMLFiles ALL DEPENDS ${OUTPUT_BASE_XML_FILES})
+
+
+set(OUTPUT_INTERFACE_TEXT_FILES)
+set(OUTPUT_INTERFACE_XML_FILES)
+set(OUTPUT_INTERFACE_XML_TARGETS)
+set(TEXT_FILE)
+set(XML_FILE)
+foreach(NXDL_FILE ${NXDL_INTERFACES})
+  string(REPLACE "${NXDL_SUFFIX}" "txt" TEXT_FILE ${NXDL_FILE})
+  string(REPLACE "${NXDL_SUFFIX}" "xml" XML_FILE ${NXDL_FILE})
+  add_custom_command(
+    OUTPUT ${CMAKE_BINARY_DIR}/manual/classes/interfaces/${TEXT_FILE} 
+    COMMAND ${XSLTPROC}
+    ARGS -o ${CMAKE_BINARY_DIR}/manual/classes/interfaces/${TEXT_FILE} ${INTERFACE_DIST_PATH}/${NXDL_FILE}
+    DEPENDS ${INTERFACE_DIST_PATH}/${NXDL_FILE}
+    COMMENT   "Generating INTERFACE TXT File ${TEXT_FILE}"
+  ) 
+  add_custom_command(
+    OUTPUT ${CMAKE_BINARY_DIR}/manual/classes/interfaces/${XML_FILE} 
+    COMMAND ${XSLTPROC}
+    ARGS -o ${CMAKE_BINARY_DIR}/manual/classes/interface/${XML_FILE} ${XSLT} ${INTERFACE_DIST_PATH}/${NXDL_FILE}
+    DEPENDS ${INTERFACE_DIST_PATH}/${NXDL_FILE}
+    COMMENT   "Generating INTERFACE XML File ${XML_FILE}"
+  ) 
+  set(OUTPUT_INTERFACE_TEXT_FILES ${OUTPUT_INTERFACE_TEXT_FILES} ${CMAKE_BINARY_DIR}/manual/classes/interfaces/${TEXT_FILE})
+  set(OUTPUT_INTERFACE_XML_FILES ${OUTPUT_INTERFACE_XML_FILES} ${CMAKE_BINARY_DIR}/manual/classes/interfaces/${XML_FILE})
+  set(OUTPUT_INTERFACE_XML_TARGETS ${OUTPUT_INTERFACE_XML_TARGETS} classes/interfaces/${XML_FILE})
+endforeach(NXDL_FILE)
+
+add_custom_target(BuildINTERFACETXTFiles ALL DEPENDS ${OUTPUT_INTERFACE_TEXT_FILES})
+add_custom_target(BuildINTERFACEXMLFiles ALL DEPENDS ${OUTPUT_INTERFACE_XML_FILES})
+
 
 set(OUTPUT_APPLICATIONS_TEXT_FILES)
 set(OUTPUT_APPLICATIONS_XML_FILES)
@@ -168,6 +204,13 @@ add_custom_command(
 	COMMAND ${CMAKE_COMMAND}
 	ARGS -E make_directory classes
 	COMMENT "Creating empty classes dir"
+)
+
+add_custom_command(
+    OUTPUT interfaces
+	COMMAND ${CMAKE_COMMAND}
+	ARGS -E make_directory classes/interfaces
+	COMMENT "Creating empty interfaces dir"
 )
 
 if (XSLTPROC)
@@ -286,7 +329,7 @@ if (PYTHONINTERP_FOUND)
         DEPENDS   ${CMAKE_BINARY_DIR}/manual/classes/ContributedClassSections.xml ${CMAKE_BINARY_DIR}/manual/classes/ApplicationClassSections.xml ${CMAKE_BINARY_DIR}/manual/classes/BaseClassSections.xml
     )
 
-    add_dependencies(NexusClassSections BuildBASEXMLFiles BuildAPPLICATIONSXMLFiles BuildCONTRIBUTEDXMLFiles BuildBASETXTFiles BuildAPPLICATIONSTXTFiles BuildCONTRIBUTEDTXTFiles )
+    add_dependencies(NexusClassSections BuildBASEXMLFiles BuildAPPLICATIONSXMLFiles BuildCONTRIBUTEDXMLFiles BuildBASETXTFiles BuildAPPLICATIONSTXTFiles BuildCONTRIBUTEDTXTFiles BuildINTERFACEXMLFiles BuildINTERFACESTXTFiles )
 
 endif (PYTHONINTERP_FOUND)
 

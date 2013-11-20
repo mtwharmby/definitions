@@ -50,13 +50,14 @@
         TODO compare with SHADOW definition "screen"
         TODO  SHADOW: http://ftp.esrf.eu/pub/scisoft/shadow       or (older)   http://www.nanotech.wisc.edu/shadow  
     -->
-
-    <field name="distance" type="NX_FLOAT" units="NX_LENGTH">
-        <doc>Distance from sample</doc>
-    </field>
-    <field name="type">
-        <doc>Type or composition of attenuator, e.g. polythene</doc>
-    </field>
+	<attribute name="implements" type="NX_CHAR">
+		<doc>
+			A komma separated list of interfaces this component implements in 
+			full or partially.
+			
+			NXattenuator can implement: NXIFbeamline_component, NXIFmetadata
+		</doc>
+	</attribute>
     <field name="thickness" type="NX_FLOAT" units="NX_LENGTH">
         <doc>Thickness of attenuator along beam direction</doc>
     </field>

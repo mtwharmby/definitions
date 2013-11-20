@@ -36,7 +36,18 @@
     version="1.0"
     svnid="$Id$"
 	type="group" extends="NXobject">
-    <doc>Template of a beamline spin flipper.</doc>
+    <doc>
+		Template of a beamline spin flipper. A spin flipper is a device used for analysis with polarised 
+		neutrons. It orients the neutron spin with the help of  a magnetic field. 
+	</doc>
+	<attribute name="implements" type="NX_CHAR">
+		<doc>
+			A komma separated list of interfaces this component implements in 
+			full or partially.
+			
+			NXflipper can implement: NXIFbeamline_component
+		</doc>
+	</attribute>
     <field name="type">
         <enumeration>
             <item value="coil"/>

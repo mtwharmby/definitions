@@ -37,5 +37,5 @@ endif(WIN32)
 install (FILES saxon9he.jar DESTINATION ${NEXUS_DEFINITIONS}/java COMPONENT
 definitions)
 
-FILE(GLOB SCHEMATRON_FILES "schematron/*")
+FILE(GLOB SCHEMATRON_FILES "schematron/*.xsl" "schematron/*.xhtml")
 INSTALL(FILES ${SCHEMATRON_FILES} DESTINATION ${NEXUS_DEFINITIONS}/schematron COMPONENT definitions)

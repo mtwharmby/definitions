@@ -36,20 +36,15 @@
 	version="1.0"
     svnid="$Id$"
 	type="group" extends="NXobject">
-	<doc>Template of the neutron or x-ray source, insertion devices and/or moderators.</doc>
-	<field name="distance" type="NX_FLOAT" units="NX_LENGTH">
+	<attribute name="implements" type="NX_CHAR">
 		<doc>
-			Effective distance from sample
-			Distance as seen by radiation from sample. This number should be negative 
-			to signify that it is upstream of the sample.
+			A komma separated list of interfaces this component implements in 
+			full or partially.
+			
+			NXsource can implement: NXIFbeamline_component, NXIFmetadata
 		</doc>
-	</field>
-	<field name="name">
-		<doc>Name of source</doc>
-		<attribute name="short_name">
-			<doc>short name for source, perhaps the acronym</doc>
-		</attribute>
-	</field>
+	</attribute>
+	<doc>Template of the neutron or x-ray source, insertion devices and/or moderators.</doc>
 	<field name="type">
 		<doc>type of radiation source (pick one from the enumerated list and spell exactly)</doc>
 		<enumeration>

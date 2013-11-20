@@ -37,7 +37,38 @@
     svnid="$Id$"
 	type="group" extends="NXobject">
 	
-	<doc>TODO: need documentation</doc>
+	<doc>
+		A disk chopper is a speedily rotating disk made from an aborbing material  placed into the beam. 
+		The rotation is around the beam direction. Its purpose is to cut the incoming beam into bunches. 
+		To this purpose the disk contains slits through which particles can pass when illuminated by the 
+		beam. 
+		
+		Disk choppers are mostly used in time-of flight neutron scattering. 
+		
+		At a constant flux neutron source like a reactor it cuts the incoming beam into bunches. 
+		Then the time the neutron needs to travel between the chopper and detector is recorded 
+		and used to determine the spead/wavelength of the neutron. This bunch generating chopper is 
+		often called the master chopper. At a pulsed neutron source, a master chopper is not necessary 
+		as the source already defines the pulse. 
+		
+		More complex chopper systems are used to further refine the raw neutron bunch by preventing frame overlap.
+		by cutting the bunch up even further etc. These choppers are often called pulse shaping choppers.
+		
+		Consider a bunch of neutrons travelling from the master chopper to a pulse shaping chopper further 
+		down the beamline. The time the bunch needs to travel to the pulse shaping chopper is not 
+		neglibile. Thus if the pulse shaping chopper would open in sync with the master chopper, the bunch would 
+		be absorbed. In order to prevent this, the pulse shaping chopper opens at an angular offset in relation 
+		to the master chopper. This angular offset is the chopper phase.   
+	</doc>
+	
+	<attribute name="implements" type="NX_CHAR">
+		<doc>
+			A komma separated list of interfaces this component implements in 
+			full or partially.
+			
+			NXattenuator can implement: NXIFbeamline_component
+		</doc>
+	</attribute>
 
 	<field name="type">
 		<doc>Type of the disk-chopper: only one from the enumerated list (match text exactly)</doc>
@@ -72,12 +103,8 @@
 		<doc>pulse reduction factor of this chopper in relation to other choppers/fastest pulse in
 			the instrument</doc>
 	</field>
-	<field name="distance" type="NX_FLOAT" units="NX_LENGTH">
-		<doc>Effective distance to the origin</doc>
-	</field>
 	<field name="wavelength_range" type="NX_FLOAT" units="NX_WAVELENGTH">
 		<doc>low and high values of wavelength range transmitted</doc>
 		<dimensions><dim index="1" value="2"/></dimensions>
 	</field>
-	<group type="NXgeometry" />
 </definition>

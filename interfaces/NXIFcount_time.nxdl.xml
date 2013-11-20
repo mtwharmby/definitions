@@ -22,45 +22,36 @@
 # For further information, see http://www.nexusformat.org
 
 ########### SVN repository information ###################
-# $Date$
-# $Author$
-# $Revision$
-# $HeadURL$
-# $Id$
+# $Date: 2012-09-27 05:57:58 +0200 (Thu, 27 Sep 2012) $
+# $Author: Pete Jemian $
+# $Revision: 1162 $
+# $HeadURL: https://svn.nexusformat.org/definitions/branches/interfaces/base_classes/NXaperture.nxdl.xml $
+# $Id: NXaperture.nxdl.xml 1162 2012-09-27 03:57:58Z Pete Jemian $
 ########### SVN repository information ###################
 -->
 <definition xmlns="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@" category="base"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@ ../nxdl.xsd"
-    name="NXpolarizer" 
+    name="NXIFcount_time" 
     version="1.0"
-    svnid="$Id$"
-	type="group" extends="NXobject">
-	<attribute name="implements" type="NX_CHAR">
-		<doc>
-			A komma separated list of interfaces this component implements in 
-			full or partially.
-			
-			NXpolarizer can implement: NXIFbeamline_component
-		</doc>
-	</attribute>
-    <doc>Template of a beamline spin polarizer.
-        
-        This is a draft and is subject to revision.</doc>
-    <field name="type">
-        <doc>one of these values: "crystal", "supermirror", "3He"</doc>
-    </field>
-    <field name="composition">
-        <doc>description of the composition of the polarizing material</doc>
-    </field>
-    <field name="reflection" type="NX_INT" units="NX_UNITLESS">
-        <doc>[hkl] values of nominal reflection</doc>
-        <dimensions>
-            <dim index="1" value="3"/>
-        </dimensions>
-    </field>
-    <field name="efficiency" type="NX_FLOAT" units="NX_DIMENSIONLESS">
-        <doc>polarizing efficiency</doc>
-    </field>
-</definition>
+    type="group" extends="NXobject">
+    <doc>
+		This interface defines how to store count time data. 
+    </doc>
+    	<field name="start_time" type="NX_FLOAT" units="NX_TIME">
+	  <doc>start time for each frame, with the ``start`` attribute as absolute reference</doc>
+	</field>
+	<field name="stop_time" type="NX_FLOAT" units="NX_TIME">
+	  <doc>stop time for each frame, with the ``start`` attribute as absolute reference</doc>
+	</field>
 
+    <field name="real_time" type="NX_NUMBER" units="NX_TIME">
+      <doc>
+	      real-time of the exposure (use this if exposure time varies for
+	      each array element, otherwise use ``count_time`` field)
+      </doc>
+     </field>
+  <field name="count_time" type="NX_NUMBER" units="NX_TIME">
+    <doc>Elapsed actual counting time</doc>
+ </field>
+</definition>

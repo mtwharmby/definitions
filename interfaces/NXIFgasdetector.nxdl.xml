@@ -22,45 +22,39 @@
 # For further information, see http://www.nexusformat.org
 
 ########### SVN repository information ###################
-# $Date$
-# $Author$
-# $Revision$
-# $HeadURL$
-# $Id$
+# $Date: 2012-09-27 05:57:58 +0200 (Thu, 27 Sep 2012) $
+# $Author: Pete Jemian $
+# $Revision: 1162 $
+# $HeadURL: https://svn.nexusformat.org/definitions/branches/interfaces/base_classes/NXaperture.nxdl.xml $
+# $Id: NXaperture.nxdl.xml 1162 2012-09-27 03:57:58Z Pete Jemian $
 ########### SVN repository information ###################
 -->
 <definition xmlns="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@" category="base"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@ ../nxdl.xsd"
-    name="NXpolarizer" 
+    name="NXIFgasdetector" 
     version="1.0"
-    svnid="$Id$"
-	type="group" extends="NXobject">
-	<attribute name="implements" type="NX_CHAR">
-		<doc>
-			A komma separated list of interfaces this component implements in 
-			full or partially.
-			
-			NXpolarizer can implement: NXIFbeamline_component
-		</doc>
-	</attribute>
-    <doc>Template of a beamline spin polarizer.
-        
-        This is a draft and is subject to revision.</doc>
-    <field name="type">
-        <doc>one of these values: "crystal", "supermirror", "3He"</doc>
-    </field>
-    <field name="composition">
-        <doc>description of the composition of the polarizing material</doc>
-    </field>
-    <field name="reflection" type="NX_INT" units="NX_UNITLESS">
-        <doc>[hkl] values of nominal reflection</doc>
-        <dimensions>
-            <dim index="1" value="3"/>
-        </dimensions>
-    </field>
-    <field name="efficiency" type="NX_FLOAT" units="NX_DIMENSIONLESS">
-        <doc>polarizing efficiency</doc>
-    </field>
-</definition>
+    type="group" extends="NXobject">
+    <doc>
+		This interface defines a few fields which are special to gas detectors.
+    </doc>
+    <symbols>
+       <doc>
+		    These symbols will be used below to coordinate datasets with the same shape.
+	   </doc>
+       <symbol name="i"><doc>number of detector pixels in the first (X, slowest) direction</doc></symbol>
+       <symbol name="j"><doc>number of detector pixels in the second (Y, faster) direction</doc></symbol>
+   </symbols>
+  <field name="gas_pressure" type="NX_FLOAT" units="NX_PRESSURE">
+    <doc>Detector gas pressure</doc>
 
+    <dimensions rank="2">
+      <dim index="1" value="i" />
+      <dim index="2" value="j" />
+    </dimensions>
+  </field>
+
+  <field name="detection_gas_path" type="NX_FLOAT" units="NX_LENGTH">
+    <doc>maximum drift space dimension</doc>
+  </field>
+</definition>

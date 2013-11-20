@@ -39,6 +39,14 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@ ../nxdl.xsd"
     svnid="$Id$">
+	<attribute name="implements" type="NX_CHAR">
+		<doc>
+			A komma separated list of interfaces this component implements in 
+			full or partially.
+			
+			NXpositioner can implement: NXIFbeamline_component, NXIFmetadata
+		</doc>
+	</attribute>
     <doc>
         This group describes a generic positioner 
         such as a motor or piezo-electric transducer.  It is used to document the
@@ -49,13 +57,7 @@
         ``NXcollection/NXpositioner`` 
         is then constructed.
     </doc>
-    <field name="name">
-        <doc>symbolic or mnemonic name (one word)</doc>
-    </field>
-    <field name="description">
-        <doc>description of positioner</doc>
-    </field>
-    <field name="value" type="NX_NUMBER" units="NX_ANY">
+   <field name="value" type="NX_NUMBER" units="NX_ANY">
         <doc>best known value of positioner - need [n] as may be scanned</doc>
         <dimensions rank="1"><dim index="1" value="n"/></dimensions>
     </field>

@@ -44,9 +44,14 @@
 		or ``NXattenuator`` (reduces beam intensity), then use 
 		``NXattenuator``.
 	</doc>
-	<group type="NXgeometry">
-		<doc>Geometry of the filter</doc>
-	</group>
+	<attribute name="implements" type="NX_CHAR">
+		<doc>
+			A komma separated list of interfaces this component implements in 
+			full or partially.
+			
+			NXfilter can implement: NXIFbeamline_component, NXIFsinglecrystal
+		</doc>
+	</attribute>
 	<field name="description">
 		<doc>
 			Composition of the filter.  Chemical formula can be specified separately.
@@ -86,62 +91,9 @@
 	<field name="density" type="NX_NUMBER" units="NX_MASS_DENSITY">
 		<doc>mass density of the filter</doc>
 	</field>
-	<field name="chemical_formula">
-		<!-- copied from NXsample -->
-		<doc>
-			The chemical formula specified using CIF conventions.
-			Abbreviated version of CIF standard: 
-			
-			* Only recognized element symbols may be used.
-			* Each element symbol is followed by a 'count' number. A count of '1' may be omitted.
-			* A space or parenthesis must separate each cluster of (element symbol + count).
-			* Where a group of elements is enclosed in parentheses, the multiplier for the 
-			  group must follow the closing parentheses. That is, all element and group 
-			  multipliers are assumed to be printed as subscripted numbers.
-			* Unless the elements are ordered in a manner that corresponds to their chemical 
-			  structure, the order of the elements within any group or moiety depends on 
-			  whether or not carbon is present.
-			* If carbon is present, the order should be: 
-			
-			  - C, then H, then the other elements in alphabetical order of their symbol. 
-			  - If carbon is not present, the elements are listed purely in alphabetic order of their symbol. 
-			  
-			* This is the *Hill* system used by Chemical Abstracts.
-		</doc>
-	</field>
 	<group name="sensor_type" type="NXsensor">
 		<doc>Sensor(s)used to monitor the filter temperature</doc>
 	</group>
-	<field name="unit_cell_a" type="NX_FLOAT" units="NX_LENGTH">
-		<doc>Unit cell lattice parameter: length of side a</doc>
-	</field>
-	<field name="unit_cell_b" type="NX_FLOAT" units="NX_LENGTH">
-		<doc>Unit cell lattice parameter: length of side b</doc>
-	</field>
-	<field name="unit_cell_c" type="NX_FLOAT" units="NX_LENGTH">
-		<doc>Unit cell lattice parameter: length of side c</doc>
-	</field>
-	<field name="unit_cell_alpha" type="NX_FLOAT" units="NX_ANGLE">
-		<doc>Unit cell lattice parameter: angle alpha</doc>
-	</field>
-	<field name="unit_cell_beta" type="NX_FLOAT" units="NX_ANGLE">
-		<doc>Unit cell lattice parameter: angle beta</doc>
-	</field>
-	<field name="unit_cell_gamma" type="NX_FLOAT" units="NX_ANGLE">
-		<doc>Unit cell lattice parameter: angle gamma</doc>
-	</field>
-	<field name="unit_cell_volume" type="NX_FLOAT" units="NX_VOLUME">
-		<doc>Unit cell</doc>
-		<dimensions rank="1"><dim index="1" value="n_comp"/></dimensions>
-	</field>
-	<field name="orientation_matrix" type="NX_FLOAT">
-		<doc>Orientation matrix of single crystal filter using Busing-Levy convention</doc>
-		<dimensions rank="3"><!--n_comp,3,3-->
-			<dim index="1" value="n_comp"/><!-- TODO n_comp is number of different compositions? -->
-			<dim index="2" value="3"/>
-			<dim index="3" value="3"/>
-		</dimensions>
-	</field>
 	<field name="m_value" type="NX_FLOAT" units="NX_DIMENSIONLESS">
 		<doc>m value of supermirror filter</doc>
 	</field>

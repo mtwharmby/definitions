@@ -57,6 +57,20 @@
 		<symbol name="ny"><doc>length of the ``y`` field</doc></symbol>
 		<symbol name="nz"><doc>length of the ``z`` field</doc></symbol>
 	</symbols>
+ 	<attribute name="implements" type="NX_CHAR">
+		<doc>
+			A komma separated list of interfaces this component implements in 
+			full or partially.
+			
+            Sell main comment below for how to use these interfaces.
+            			
+			NXdata can implement: 
+			NXIFsingle_detector, NXIFsingle_detector_scanned, NXIFsingle_detector_tof,
+			NXIFlinear_detector, NXIFlinear_detector_scanned, NXIFlinear_detector_tof,
+			NXIFarea_detector, NXIFarea_detector_scanned, NXIFarea_detector_tof,
+			NXIFgeneric_detector, NXIFgeneric_detector_scanned, NXIFgeneric_detector_tof,
+		</doc>
+	</attribute>
 	
 	
 	<doc>
@@ -108,6 +122,18 @@
 		``NXdata`` is used to implement one of the basic motivations in NeXus,
 		to provide a default plot for the data of this ``NXentry``.  The actual data
 		might be stored in another group and (hard) linked to the ``NXdata`` group.
+		
+		When constructing a NXdata group two cases have to be considered:
+		
+		1. The NXdata describes raw data. In that case it is often (but not always) possible to use 
+		   one of the detector interfaces matching your detector and use case as a guideline.
+		   Not the whole of the respective interface is needed, just the data field plus the 
+		   associated axes need to be linked her. In the case of a scan, the variables varied during 
+		   the scan need to be linked here too. In order to make NXdata similar to the tabular representation 
+		   people are used to for scans. 
+		2. The NXdata describes processed data. Then the content should still allow to plot the result of 
+		   the processing. Thus it needs to contain the resulting data from the processing plus the axes 
+		   required to plot the data. 
 	</doc>
 	<field name="variable" type="NX_NUMBER">
 		<doc>

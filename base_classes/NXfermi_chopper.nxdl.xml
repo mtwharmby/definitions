@@ -36,7 +36,19 @@
 	version="1.0"
     svnid="$Id$"
 	type="group" extends="NXobject">
-	<doc>Description of a Fermi chopper, possibly with curved slits.</doc>
+	<doc>Description of a Fermi chopper, possibly with curved slits.
+		A Fermi chopper is similar to a disk chopper, but the rotation axis is 0,1,0. 
+		
+	</doc>
+		<attribute name="implements" type="NX_CHAR">
+		<doc>
+			A komma separated list of interfaces this component implements in 
+			full or partially.
+			
+			NXfermi_chopper can implement: NXIFbeamline_component
+		</doc>
+	</attribute>
+
 	<field name="type">
 		<doc>Fermi chopper type</doc>
 	</field>
@@ -71,9 +83,6 @@
   <field name="energy" type="NX_FLOAT" units="NX_ENERGY">
         <doc>energy selected</doc>
   </field> 
-	<group type="NXgeometry">
-		<doc>geometry of the fermi chopper</doc>
-	</group>
 	<field name="absorbing_material">
 		<doc>absorbing material</doc>
 	</field>

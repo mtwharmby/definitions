@@ -315,6 +315,7 @@ def main(tree, ns):
     subdir = os.path.split(os.path.split(tree.docinfo.URL)[0])[1]
     index_cat = {
                  'base_classes': 'Base Classes',
+                 'interfaces': 'Interfaces',
                  'applications': 'Application Definitions',
                  'contributed_definitions': 'Contributed Definitions',
                  }[subdir]

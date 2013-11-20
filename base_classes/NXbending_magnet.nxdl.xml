@@ -38,6 +38,14 @@
 	type="group" extends="NXobject">
 
 	<doc>description for a bending magnet</doc>
+		<attribute name="implements" type="NX_CHAR">
+		<doc>
+			A komma separated list of interfaces this component implements in 
+			full or partially.
+			
+			NXbending_magnet can implement: NXIFbeamline_component, NXIFmetadata
+		</doc>
+	</attribute>
 	<field name="critical_energy" type="NX_FLOAT" units="NX_ENERGY"/>
   <field name="bending_radius" type="NX_FLOAT" units="NX_LENGTH"/>
   <field name="magnetic_field" type="NX_FLOAT" units="NX_CURRENT">

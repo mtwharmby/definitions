@@ -37,13 +37,15 @@
     svnid="$Id$"
 	type="group" extends="NXobject">
     <doc>This is the description for a general moderator</doc>
-    <group type="NXgeometry">
-        <doc>"Engineering" position of moderator</doc>
-    </group>
-    <field name="distance" type="NX_FLOAT" units="NX_LENGTH">
-        <doc>Effective distance as seen by measuring radiation</doc>
-    </field>
-    <field name="type">
+	<attribute name="implements" type="NX_CHAR">
+		<doc>
+			A komma separated list of interfaces this component implements in 
+			full or partially.
+			
+			NXmoderator can implement: NXIFbeamline_component
+		</doc>
+	</attribute>
+   <field name="type">
         <enumeration>
             <item value="H20"/>
             <item value="D20"/>

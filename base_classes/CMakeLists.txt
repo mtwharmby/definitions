@@ -28,6 +28,8 @@
 
 set(BASE_FILES 
 	NXaperture.nxdl.xml 
+	NXpinhole.nxdl.xml
+	NXslit.nxdl.xml
 	NXattenuator.nxdl.xml 
 	NXbeam.nxdl.xml 
 	NXbeam_stop.nxdl.xml 
@@ -86,3 +88,4 @@ configure_nxdl(CheckBaseClasses "${BASE_SOURCE}" "${BASE_DIST}" "${BASE_FILES}")
 foreach(F ${BASE_FILES})
     install(FILES ${BASE_DIST}/${F} DESTINATION ${NEXUS_DEFINITIONS}/base_classes COMPONENT definitions)
 endforeach()
+

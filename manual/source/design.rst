@@ -430,6 +430,26 @@ groups. These ``NXdata`` groups represent the plottable data.  Here is the way a
    make the plot
 
 
+NeXus Interfaces
+------------------
+
+When defining NeXus base classes the NeXus community encountered two reoccurring problems:
+
+1. Some fields, for example for positioning a component in the beam, are shared between many 
+   components.
+2. Some base classes, for example NXdetector, describe a whole set of different pieces of 
+   equimpment.
+
+The classical way to solve this problem would have been to use inheritance. But this would have 
+complicated the NeXus hierarchy even further and causes problems with backwards compatability. 
+Also there would have been cases of multiple inheritance where things turn really messy. Instead 
+the NeXus community decided to solve the problem with interfaces. Interfaces detail the fields 
+necessary to describe either a shared or special concept. A set of interfaces are  
+defined which a base class can implement. The interfaces implemented by  a given base class 
+are stored as a group attribute which becomes a komma separated list of interfaces.   
+
+NeXus interfaces are up to now only used to improve the definition of base classes. 
+
 .. _Design-NeXusApplications:
 
 NeXus Application Definitions

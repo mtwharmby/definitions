@@ -36,6 +36,14 @@
     version="1.0"
     svnid="$Id: NXxraylens.nxdl.xml 662 2010-10-21 15:47:35Z Pete Jemian $"
     type="group" extends="NXobject">
+	<attribute name="implements" type="NX_CHAR">
+		<doc>
+			A komma separated list of interfaces this component implements in 
+			full or partially.
+			
+			NXxraylens can implement: NXIFbeamline_component, NXIFmetadata
+		</doc>
+	</attribute>
 
     <doc>
       This is a dictionary of field names to use for 

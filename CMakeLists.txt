@@ -124,6 +124,7 @@ endif()
 # Recurse into the subdirectories.
 #add_subdirectory (tutorial)
 add_subdirectory (base_classes)
+add_subdirectory (interfaces)
 add_subdirectory (contributed_definitions)
 add_subdirectory (applications)
 add_subdirectory (schema)

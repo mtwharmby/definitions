@@ -21,21 +21,35 @@
 # For further information, see http://www.nexusformat.org
 
 ########### SVN repository information ###################
-# $Date$
-# $Author$
-# $Revision$
-# $HeadURL$
-# $Id$
+# $Date: 2012-09-27 05:57:58 +0200 (Thu, 27 Sep 2012) $
+# $Author: Pete Jemian $
+# $Revision: 1162 $
+# $HeadURL: https://svn.nexusformat.org/definitions/branches/interfaces/manual/source/classes/base_classes/Makefile $
+# $Id: Makefile 1162 2012-09-27 03:57:58Z Pete Jemian $
 ########### SVN repository information ###################
 
-SUBDIRS = base_classes applications contributed_definitions interfaces
+ROOTDIR = ../../../../
+NXDL2RST = $(ROOTDIR)/utils/nxdl2rst.py
+NXDL_SUFFIX = nxdl.xml
 
-.PHONY: subdirs $(SUBDIRS) clean
+SRCDIR = $(ROOTDIR)/interfaces
 
-subdirs: $(SUBDIRS)
+SRCs = $(wildcard $(SRCDIR)/NXIF*.$(NXDL_SUFFIX) )
+RSTs := $(SRCs:.$(NXDL_SUFFIX)=.rst)
+RSTs := $(patsubst $(SRCDIR)/%, ./%, $(RSTs) )
 
-$(SUBDIRS):
-	$(MAKE) -C $@
+vpath %.$(NXDL_SUFFIX) $(SRCDIR)
+
+.PHONY: all clean test
+
+all :: $(RSTs)
+
+%.rst : %.$(NXDL_SUFFIX) $(NXDL2RST) Makefile
+	$(NXDL2RST) $< > $@
 
 clean ::
-#	$(MAKE) clean -C $(SUBDIRS)
+	$(RM) NX*.rst
+
+test ::
+	# $(SRCs)
+	# $(RSTs)

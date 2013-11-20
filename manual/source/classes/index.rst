@@ -17,13 +17,25 @@ classes might be called *group type* or some similar term.
 In this section, the NeXus classes are described in detail.  Each class is specified
 using :ref:`NXDL`, described in a separate chapter.
 
-There are three types of NeXus class file: base classes, application definitions, 
+There are four types of NeXus class file: base classes, interfaces, application definitions, 
 and contributed definitions.  Base class definitions define the *complete* set of 
-terms that *might* be used in an instance of that class.  Application definitions 
+terms that *might* be used in an instance of that class. Base classes can implement interfaces.
+Interfaces are used in base class definitions for two purposes:
+
+1. In order to describe fields used by more then one base class. A good example is NXIFbeamline_component 
+   which holds the fields necessary to position a component in the beamline. Naturally, many classe need 
+   these fields.
+2. When a class has become to complex and implements multiple use cases. A prime example is NXdetector which 
+   can describe many kinds of detectors. In order to be more specific about detectors, interfaces are used.  
+ 
+Application definitions 
 define the *minimum* set of terms that *must* be used in an instance of that class.  
 Contributed definitions include propositions from the community for NeXus base 
 classes or application definitions, as well as other NXDL files for long-term 
 archival by NeXus.
+
+
+
 
 NeXus Class Specifications
 ##########################

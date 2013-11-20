@@ -36,6 +36,14 @@
     version="1.0"
     svnid="$Id$"
 	type="group" extends="NXobject">
+ 	<attribute name="implements" type="NX_CHAR">
+		<doc>
+			A komma separated list of interfaces this component implements in 
+			full or partially.
+			
+			NXinsertion_device can implement: NXIFbeamline_component, NXIFmonochromator
+		</doc>
+	</attribute>
     <doc>Description of an insertion device, as in a synchrotron.</doc>
     <field name="type">
         <enumeration>
@@ -74,9 +82,6 @@
     </field>
     <group type="NXdata" name="spectrum">
         <doc>spectrum of insertion device</doc>
-    </group>
-    <group type="NXgeometry">
-        <doc>"Engineering" position of insertion device</doc>
     </group>
 </definition>
 

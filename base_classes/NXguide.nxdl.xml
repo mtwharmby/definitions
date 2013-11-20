@@ -38,7 +38,16 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://definition.nexusformat.org/nxdl/@NXDL_RELEASE@ ../nxdl.xsd"
 	svnid="$Id$">
-    
+	
+  	<attribute name="implements" type="NX_CHAR">
+		<doc>
+			A komma separated list of interfaces this component implements in 
+			full or partially.
+			
+			NXguide can implement: NXIFbeamline_component
+		</doc>
+	</attribute>
+  
     <symbols>
         <symbol name="nsurf"><doc>number of reflecting surfaces</doc></symbol>
         <symbol name="nwl"><doc>number of wavelengths</doc></symbol>
