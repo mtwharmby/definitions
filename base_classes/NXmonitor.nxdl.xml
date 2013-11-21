@@ -38,9 +38,6 @@
     type="group" extends="NXobject">
  	<attribute name="implements" type="NX_CHAR">
 		<doc>
-			A komma separated list of interfaces this component implements in 
-			full or partially.
-			
 			NXmonitor can implement: NXIFbeamline_component, NXIF_single_detector, 
 			NXIF_single_detector_tof, NXIF_single_detector_scanned,
 			NXIF_count_time, NXIF_count_time_scanned

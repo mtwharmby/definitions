@@ -38,9 +38,6 @@
 	type="group" extends="NXobject">
  	<attribute name="implements" type="NX_CHAR">
 		<doc>
-			A komma separated list of interfaces this component implements in 
-			full or partially.
-			
 			NXinsertion_device can implement: NXIFbeamline_component, NXIFmonochromator
 		</doc>
 	</attribute>

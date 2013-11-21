@@ -41,10 +41,7 @@
 		neutrons. It orients the neutron spin with the help of  a magnetic field. 
 	</doc>
 	<attribute name="implements" type="NX_CHAR">
-		<doc>
-			A komma separated list of interfaces this component implements in 
-			full or partially.
-			
+	        <doc>
 			NXflipper can implement: NXIFbeamline_component
 		</doc>
 	</attribute>

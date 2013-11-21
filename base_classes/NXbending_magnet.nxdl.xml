@@ -40,9 +40,6 @@
 	<doc>description for a bending magnet</doc>
 		<attribute name="implements" type="NX_CHAR">
 		<doc>
-			A komma separated list of interfaces this component implements in 
-			full or partially.
-			
 			NXbending_magnet can implement: NXIFbeamline_component, NXIFmetadata
 		</doc>
 	</attribute>

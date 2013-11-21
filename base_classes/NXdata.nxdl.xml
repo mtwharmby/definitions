@@ -59,11 +59,6 @@
 	</symbols>
  	<attribute name="implements" type="NX_CHAR">
 		<doc>
-			A komma separated list of interfaces this component implements in 
-			full or partially.
-			
-            Sell main comment below for how to use these interfaces.
-            			
 			NXdata can implement: 
 			NXIFsingle_detector, NXIFsingle_detector_scanned, NXIFsingle_detector_tof,
 			NXIFlinear_detector, NXIFlinear_detector_scanned, NXIFlinear_detector_tof,

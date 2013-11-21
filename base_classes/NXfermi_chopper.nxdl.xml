@@ -42,9 +42,6 @@
 	</doc>
 		<attribute name="implements" type="NX_CHAR">
 		<doc>
-			A komma separated list of interfaces this component implements in 
-			full or partially.
-			
 			NXfermi_chopper can implement: NXIFbeamline_component
 		</doc>
 	</attribute>

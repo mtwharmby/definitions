@@ -57,10 +57,7 @@
     </doc>
 	<attribute name="implements" type="NX_CHAR">
 		<doc>
-			A komma separated list of interfaces this component implements in 
-			full or partially.
-			
-			NXattenuator can implement: NXIFbeamline_component, NXIFmonochromator, NXIFsinglecrystal
+			NXcrystal can implement: NXIFbeamline_component, NXIFmonochromator, NXIFsinglecrystal
 		</doc>
 	</attribute>
 

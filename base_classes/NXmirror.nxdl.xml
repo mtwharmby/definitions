@@ -39,9 +39,6 @@
     <doc>Template of a beamline mirror or supermirror.</doc>
 	<attribute name="implements" type="NX_CHAR">
 		<doc>
-			A komma separated list of interfaces this component implements in 
-			full or partially.
-			
 			NXmirror can implement: NXIFbeamline_component
 		</doc>
 	</attribute>

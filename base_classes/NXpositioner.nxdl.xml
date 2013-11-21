@@ -41,9 +41,6 @@
     svnid="$Id$">
 	<attribute name="implements" type="NX_CHAR">
 		<doc>
-			A komma separated list of interfaces this component implements in 
-			full or partially.
-			
 			NXpositioner can implement: NXIFbeamline_component, NXIFmetadata
 		</doc>
 	</attribute>

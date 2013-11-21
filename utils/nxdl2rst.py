@@ -395,6 +395,25 @@ def main(tree, ns):
     print '\t%s/%s/%s.nxdl.xml' % (html_root, subdir, name)
     print fmt % ('svnid', str(root.get('svnid')).strip('$').strip())
     
+    # Interfaces
+    inthead = \
+"""
+Besides the fields described below this base class can implement all or some
+of the fields from the interfaces listed below. 
+
+"""
+    if subdir == 'base_classes':
+        atlist = root.xpath('nx:attribute',namespaces=ns)
+        for at in atlist:
+            atname = at.get('name')
+            if atname == 'implements':
+                intdoc = getDocFromNode(ns,at)
+                print('\n\nInterfaces')
+                print('=============\n')
+                print(inthead)
+                print(intdoc)
+
+
     print '\n.. compound::\n'
     print '\t.. rubric:: Structure of %s\n' % name
     print '\t.. code-block:: guess'

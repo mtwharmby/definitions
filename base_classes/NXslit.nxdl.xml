@@ -47,10 +47,7 @@
    </doc>
 	<attribute name="implements" type="NX_CHAR">
 		<doc>
-			A komma separated list of interfaces this component implements in 
-			full or partially.
-			
-			NXattenuator can implement: NXIFbeamline_component, NXIFmetadata
+			NXslit can implement: NXIFbeamline_component, NXIFmetadata
 		</doc>
 	</attribute>
     <field name="x_gap" type="NX_FLOAT" units="NX_LENGTH">

@@ -41,9 +41,6 @@
 	
   	<attribute name="implements" type="NX_CHAR">
 		<doc>
-			A komma separated list of interfaces this component implements in 
-			full or partially.
-			
 			NXguide can implement: NXIFbeamline_component
 		</doc>
 	</attribute>

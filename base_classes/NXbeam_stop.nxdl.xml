@@ -41,9 +41,6 @@
     and SAXS experiments.</doc>
 	<attribute name="implements" type="NX_CHAR">
 		<doc>
-			A komma separated list of interfaces this component implements in 
-			full or partially.
-			
 			NXbeam_stop can implement: NXIFbeamline_component, NXIFmetadata
 		</doc>
 	</attribute>

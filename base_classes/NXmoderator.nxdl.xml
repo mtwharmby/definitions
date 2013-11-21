@@ -39,9 +39,6 @@
     <doc>This is the description for a general moderator</doc>
 	<attribute name="implements" type="NX_CHAR">
 		<doc>
-			A komma separated list of interfaces this component implements in 
-			full or partially.
-			
 			NXmoderator can implement: NXIFbeamline_component
 		</doc>
 	</attribute>

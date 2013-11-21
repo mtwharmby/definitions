@@ -40,9 +40,6 @@
             >
  	<attribute name="implements" type="NX_CHAR">
 		<doc>
-			A komma separated list of interfaces this component implements in 
-			full or partially.
-			
 			NXdetector will of course only implement those interfaces out of the selection 
 			below which match the detector used and the mode in which the instrument was 
 			operated.

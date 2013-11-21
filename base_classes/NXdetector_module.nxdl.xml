@@ -80,8 +80,7 @@
 		<attribute name="depends_on">
 		</attribute>
         <doc>
-             Values along the direction of fastest varying pixel direction. 
-	     The direction itself is given through the vector attribute
+             Values along the direction of fastest varying pixel direction.The direction itself is given through the vector attribute
         </doc>
     </field>
    <field name="slow_pixel_direction" type="NX_LENGTH">
@@ -97,8 +96,7 @@
 		<attribute name="depends_on">
 		</attribute>
         <doc>
-             Values along the direction of fastest varying pixel direction. 
-	     The direction itself is given through the vector attribute
+             Values along the direction of fastest varying pixel direction. The direction itself is given through the vector attribute
         </doc>
     </field>
 </definition>

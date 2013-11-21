@@ -46,9 +46,6 @@
         scattering by the sample, e.g., energy transfer, polarizations. </doc>
 	<attribute name="implements" type="NX_CHAR">
 		<doc>
-			A komma separated list of interfaces this component implements in 
-			full or partially.
-			
 			NXbeam can implement: NXIFbeamline_component in order to describe the 
 			position where the beam was characterized. 
 		</doc>

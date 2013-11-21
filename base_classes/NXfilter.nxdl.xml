@@ -46,9 +46,6 @@
 	</doc>
 	<attribute name="implements" type="NX_CHAR">
 		<doc>
-			A komma separated list of interfaces this component implements in 
-			full or partially.
-			
 			NXfilter can implement: NXIFbeamline_component, NXIFsinglecrystal
 		</doc>
 	</attribute>

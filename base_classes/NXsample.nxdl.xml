@@ -38,9 +38,6 @@
 	type="group" extends="NXobject">
 	<attribute name="implements" type="NX_CHAR">
 		<doc>
-			A komma separated list of interfaces this component implements in 
-			full or partially.
-			
 			NXsample can implement: NXIFbeamline_component, NXIFmetadata, NXIFsinglecrystal
 		</doc>
 	</attribute>
