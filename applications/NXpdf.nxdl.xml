@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="nxdlformat.xsl" ?>
+<!-- 
+  # NeXus - Neutron and X-ray Common Data Format
+  # 
+  # Copyright (C) 2013-2016 NeXus International Advisory Committee (NIAC)
+  # 
+  # This library is free software; you can redistribute it and/or
+  # modify it under the terms of the GNU Lesser General Public
+  # License as published by the Free Software Foundation; either
+  # version 3 of the License, or (at your option) any later version. 
+  # 
+  # This library is distributed in the hope that it will be useful,
+  # but WITHOUT ANY WARRANTY; without even the implied warranty of
+  # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  # Lesser General Public License for more details.
+  #
+  # You should have received a copy of the GNU Lesser General Public
+  # License along with this library; if not, write to the Free Software
+  # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  #
+  # For further information, see http://www.nexusformat.org 
+-->
+<definition name="NXmx" extends="NXobject" type="group"
+	version="1.4" category="application"
+	xmlns="http://definition.nexusformat.org/nxdl/3.1"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://definition.nexusformat.org/nxdl/3.1 ../nxdl.xsd"
+	>
+	
+	<group type="NXentry">
+		<attribute name="file_time" type="NX_DATE_TIME"></attribute>
+		<attribute name="file_name"></attribute>
+		<field name="experiment_start_time" type="NX_DATE_TIME"></field>
+		<field name="experiment_end_time" type="NX_DATE_TIME"></field>
+		<field name="entry_identifier"><doc>User supplied name of experiment.</doc></field>
+		<field name="experiment_identifier"><doc>The visit ID.</doc></field>
+		<field name="program_name"><doc>Software package that wrote this file.</doc></field>
+		<field name="scan_command"><doc>The set of instructions used to run this scan in JSON format.</doc></field>
+		<field name="scan_identifier"><doc>The number of the scan.</doc></field>
+		
+		<group type="NXinstrument" name="instrument">
+			<field name="name"><doc>Name of instrument where data was collected, e.g. I15-1.</doc></field>
+			<field name="alternative_name"><doc>User friendly alternative name for instrument, e.g. XPDF</doc></field>
+			
+			<group type="NXsource" name="source"></group>
+			<group type="NXinsertion_device" name="insertion_device"></group>
+			
+		</group>
+	</group>
+</definition>
